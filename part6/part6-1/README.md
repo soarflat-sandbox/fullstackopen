@@ -2,9 +2,14 @@
 
 非常にシンプルな React + Redux の利用例。
 
-## Usage
+## セットアップ
 
 ```shell
-$ yarn
+$ yarn start
+```
+
+## アプリケーションを development mode で起動
+
+```shell
 $ yarn start
 ```
