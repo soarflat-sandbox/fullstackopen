@@ -21,11 +21,13 @@ function App() {
   return (
     <div>
       <div>{store.getState()}</div>
-      <button onClick={e => store.dispatch({ type: 'INCREMENT' })}>plus</button>
-      <button onClick={e => store.dispatch({ type: 'DECREMENT' })}>
+      <button onClick={() => store.dispatch({ type: 'INCREMENT' })}>
+        plus
+      </button>
+      <button onClick={() => store.dispatch({ type: 'DECREMENT' })}>
         minus
       </button>
-      <button onClick={e => store.dispatch({ type: 'ZERO' })}>zero</button>
+      <button onClick={() => store.dispatch({ type: 'ZERO' })}>zero</button>
     </div>
   );
 }
