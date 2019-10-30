@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Note from './components/Note';
 import noteService from './services/notes';
 
@@ -12,12 +11,11 @@ const App = () => {
     ? notes
     : notes.filter(note => note.important === true);
 
-  const hook = () => {
+  useEffect(() => {
     noteService.getAll().then(initialNotes => {
       setNotes(initialNotes);
     });
-  };
-  useEffect(hook, []);
+  }, []);
 
   const toggleImportanceOf = id => {
     const note = notes.find(note => note.id === id);
