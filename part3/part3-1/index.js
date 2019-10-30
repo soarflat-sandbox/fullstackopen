@@ -9,14 +9,9 @@ const requestLogger = (request, response, next) => {
   console.log('---');
   next();
 };
-// 存在しないルートへのリクエストをキャッチし、JSON形式のエラーメッセージを返すミドルウェア
-const unknownEndpoint = (request, response) => {
-  response.status(404).send({ error: 'unknown endpoint' });
-};
 
 app.use(bodyParser.json());
 app.use(requestLogger);
-app.use(unknownEndpoint);
 
 let notes = [
   {
@@ -91,6 +86,12 @@ app.delete('/notes/:id', (request, response) => {
   // リソースの削除が成功した場合　204（No Content）を返す
   response.status(204).end();
 });
+
+// 存在しないルートへのリクエストをキャッチし、JSON形式のエラーメッセージを返すミドルウェア
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' });
+};
+app.use(unknownEndpoint);
 
 const PORT = 3001;
 app.listen(PORT, () => {
